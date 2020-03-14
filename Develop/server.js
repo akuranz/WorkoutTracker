@@ -17,6 +17,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true
 });
 
+mongoose.connect(MONGODB_URI);
+
 // db.Excercise.create();
 require("./routes/api-routes")(app);
 require("./routes/html-routes")(app);
