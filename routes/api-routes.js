@@ -14,7 +14,9 @@ module.exports = function(app) {
 
   app.put("/api/workouts/:id", function(req, res) {
     const id = req.params.id;
-    Workout.findByIdAndUpdate(id, req.body)
+    Workout.findByIdAndUpdate(id, {
+      $push: { exercises: req.body }
+    })
       .then(workout => {
         res.json(workout);
       })

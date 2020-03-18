@@ -6,7 +6,7 @@ const WorkoutSchema = new Schema(
   {
     day: {
       type: Date,
-      default: Date.now
+      default: new Date()
     },
     exercises: [
       {
@@ -35,9 +35,9 @@ const WorkoutSchema = new Schema(
     ]
   },
   {
-    toObject: {
-      virtuals: true
-    },
+    // toObject: {
+    //   virtuals: true
+    // },
     toJSON: {
       virtuals: true
     }
@@ -53,9 +53,9 @@ WorkoutSchema.virtual("totalDuration").get(function() {
   }, 0);
 });
 
-WorkoutSchema.virtual("number_of_exercises").get(function() {
-  return this.exercises.length;
-});
+// WorkoutSchema.virtual("number_of_exercises").get(function() {
+//   return this.exercises.length;
+// });
 
 const Workouts = mongoose.model("Workout", WorkoutSchema);
 
